@@ -1,0 +1,21 @@
+language: java
+jdk: oraclejdk8
+# Trusty dist needed for postgresql version 9.6
+dist: trusty
+# Caches downloaded libraries between builds
+cache:
+  directories:
+    - node_modules
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
+sudo: true
+before_install:
+  # Use wrapper script to install fixed maven version
+  - mvn -N io.takari:maven:wrapper -Dmaven=3.3.9
+install:
+  - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+script:
+  - ./mvnw verify --batch-mode
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -f "!*/jacoco" -F js
+  - bash <(curl -s https://codecov.io/bash) -f "!*/cobertura" -F java
