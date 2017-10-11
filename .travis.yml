@@ -17,5 +17,6 @@ install:
 script:
   - ./mvnw verify --batch-mode
 after_success:
-  - bash <(curl -s https://codecov.io/bash) -f "!*/jacoco" -F js
-  - bash <(curl -s https://codecov.io/bash) -f "!*/cobertura" -F java
+  - ./mvnw coveralls:report
+  - bash <(curl -s https://codecov.io/bash) -f 'target/site/jacoco/jacoco.xml' -F js
+  - bash <(curl -s https://codecov.io/bash) -f 'target/generated-sources/coverage/cobertura/cobertura-coverage.xml' -F java

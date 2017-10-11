@@ -16,9 +16,8 @@ coverage:
         flags: js
     patch: yes
     changes: no
-    
   flags:
-    platform:
+    java:
       paths:
         - */src/main/java
     js:

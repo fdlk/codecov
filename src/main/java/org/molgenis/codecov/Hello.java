@@ -10,4 +10,9 @@ public class Hello
 		}
 		return "Hello " + who;
 	}
+
+	public void newMethod()
+	{
+		System.out.println("lalala");
+	}
 }
