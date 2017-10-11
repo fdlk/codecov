@@ -9,10 +9,11 @@ coverage:
 
   status:
     project:
-      default: off
       platform:
+        enabled: yes
         flags: platform
       js:
+        enabled: yes
         flags: js
     patch: yes
     changes: no
