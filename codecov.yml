@@ -9,12 +9,14 @@ coverage:
 
   status:
     project:
-      platform:
+      java:
         enabled: yes
-        flags: platform
+        flags: java
+        if_not_found: success
       js:
         enabled: yes
         flags: js
+        if_not_found: success
     patch: yes
     changes: no
   flags:
